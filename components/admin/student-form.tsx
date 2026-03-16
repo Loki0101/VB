@@ -23,7 +23,16 @@ interface Project {
 }
 
 interface StudentFormProps {
-  initialData?: any;
+  initialData?: {
+    id?: string;
+    name?: string | null;
+    slug?: string | null;
+    bio?: string | null;
+    department?: string | null;
+    year?: string | null;
+    photo?: string | null;
+    projects?: Project[];
+  };
 }
 
 export default function StudentForm({ initialData }: StudentFormProps) {
@@ -52,7 +61,7 @@ export default function StudentForm({ initialData }: StudentFormProps) {
         slug: s.name.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, "") 
       }));
     }
-  }, [student.name, initialData]);
+  }, [student.name, initialData, student.slug]);
 
   const addProject = () => {
     setProjects([

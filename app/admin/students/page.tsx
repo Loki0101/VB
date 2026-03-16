@@ -4,15 +4,29 @@ import { prisma } from "@/lib/prisma";
     
 export const dynamic = "force-dynamic";
 
+interface StudentListItem {
+  id: string;
+  name: string;
+  slug: string;
+  photo: string | null;
+  department: string | null;
+  year: string | null;
+  _count: {
+    projects: number;
+  };
+  updatedAt: Date;
+}
+
 export default async function StudentListPage() {
-  let students: any[] = [];
+  let students: StudentListItem[] = [];
   let error = false;
 
   try {
-    students = await prisma.student.findMany({
+    const rawStudents = await prisma.student.findMany({
       include: { _count: { select: { projects: true } } },
       orderBy: { updatedAt: "desc" },
     });
+    students = rawStudents as StudentListItem[];
   } catch (e) {
     console.error("Student list database error:", e);
     error = true;

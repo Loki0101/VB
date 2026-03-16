@@ -26,7 +26,7 @@ export default async function AdminDashboard() {
         </div>
       )}
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <div className="bg-zinc-900/40 border border-zinc-800 p-6 rounded-2xl backdrop-blur-sm">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-indigo-600/10 rounded-xl flex items-center justify-center text-indigo-500">
@@ -51,7 +51,7 @@ export default async function AdminDashboard() {
           </div>
         </div>
 
-        <div className="bg-zinc-900/40 border border-zinc-800 p-6 rounded-2xl backdrop-blur-sm">
+        <div className="bg-zinc-900/40 border border-zinc-800 p-6 rounded-2xl backdrop-blur-sm sm:col-span-2 lg:col-span-1">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-amber-600/10 rounded-xl flex items-center justify-center text-amber-500">
               <Plus className="w-6 h-6" />
@@ -67,22 +67,22 @@ export default async function AdminDashboard() {
       </div>
 
       {/* Welcome Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-indigo-900/20 to-zinc-900/40 border border-zinc-800 p-10 rounded-3xl">
+      <div className="relative overflow-hidden bg-gradient-to-br from-indigo-900/20 to-zinc-900/40 border border-zinc-800 p-6 sm:p-10 rounded-3xl">
         <div className="relative z-10 max-w-2xl">
-          <h2 className="text-3xl font-bold text-white mb-4">Welcome to Visionary Burma</h2>
-          <p className="text-zinc-400 leading-relaxed mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Welcome to Visionary Burma</h2>
+          <p className="text-sm sm:text-base text-zinc-400 leading-relaxed mb-8">
             Manage your student showcase with ease. This portal allows you to curate student profiles, showcase their best work, and automatically generate portfolio pages.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link 
               href="/admin/students" 
-              className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-semibold transition-all shadow-lg shadow-indigo-500/20"
+              className="w-full sm:w-auto text-center bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-semibold transition-all shadow-lg shadow-indigo-500/20"
             >
               View Students
             </Link>
             <Link 
               href="/admin/students/new" 
-              className="bg-zinc-800 hover:bg-zinc-700 text-white px-6 py-3 rounded-xl font-semibold transition-all"
+              className="w-full sm:w-auto text-center bg-zinc-800 hover:bg-zinc-700 text-white px-6 py-3 rounded-xl font-semibold transition-all"
             >
               Add Profile
             </Link>

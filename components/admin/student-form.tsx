@@ -104,7 +104,7 @@ export default function StudentForm({ initialData }: StudentFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8 pb-20">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-center gap-4">
           <Link 
             href="/admin/students" 
@@ -112,14 +112,14 @@ export default function StudentForm({ initialData }: StudentFormProps) {
           >
             <ArrowLeft className="w-5 h-5" />
           </Link>
-          <h2 className="text-2xl font-bold text-white">
+          <h2 className="text-xl sm:text-2xl font-bold text-white">
             {initialData ? "Edit Student" : "New Student"}
           </h2>
         </div>
         <button
           type="submit"
           disabled={isLoading || isSuccess}
-          className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2.5 rounded-xl font-semibold transition-all flex items-center gap-2 disabled:opacity-50"
+          className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2.5 rounded-xl font-semibold transition-all flex items-center justify-center gap-2 disabled:opacity-50"
         >
           {isLoading ? (
             <Loader2 className="w-5 h-5 animate-spin" />
@@ -135,7 +135,7 @@ export default function StudentForm({ initialData }: StudentFormProps) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Basic Info */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-zinc-900/40 border border-zinc-800 p-8 rounded-2xl space-y-6 backdrop-blur-sm">
+          <div className="bg-zinc-900/40 border border-zinc-800 p-6 sm:p-8 rounded-2xl space-y-6 backdrop-blur-sm">
             <h3 className="text-lg font-semibold text-white border-b border-zinc-800 pb-4">Basic Information</h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -210,11 +210,11 @@ export default function StudentForm({ initialData }: StudentFormProps) {
 
             <div className="space-y-4">
               {projects.map((project, index) => (
-                <div key={index} className="bg-zinc-900/40 border border-zinc-800 p-6 rounded-2xl relative group backdrop-blur-sm animate-in fade-in slide-in-from-top-4">
+                <div key={index} className="bg-zinc-900/40 border border-zinc-800 p-4 sm:p-6 rounded-2xl relative group backdrop-blur-sm animate-in fade-in slide-in-from-top-4">
                   <button 
                     type="button"
                     onClick={() => removeProject(index)}
-                    className="absolute top-4 right-4 p-2 text-zinc-600 hover:text-red-400 transition-colors"
+                    className="absolute top-2 right-2 sm:top-4 sm:right-4 p-2 text-zinc-600 hover:text-red-400 transition-colors"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>

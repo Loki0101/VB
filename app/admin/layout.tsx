@@ -6,18 +6,8 @@ import {
   ChevronRight,
   GraduationCap
 } from "lucide-react";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
-import { redirect } from "next/navigation";
-import { SignOutButton } from "@/components/admin/sign-out-button";
 
 export default async function AdminLayout({ children }: { children: ReactNode }) {
-  const session = await getServerSession(authOptions);
-
-  if (!session) {
-    redirect("/admin/login");
-  }
-
   return (
     <div className="min-h-screen bg-[#050505] flex text-zinc-300">
       {/* Sidebar */}
@@ -53,10 +43,9 @@ export default async function AdminLayout({ children }: { children: ReactNode })
 
         <div className="p-4 border-t border-zinc-800">
           <div className="bg-zinc-900/50 rounded-2xl p-4 mb-4">
-            <p className="text-xs text-zinc-500 mb-1">Signed in as</p>
-            <p className="text-sm font-medium text-white truncate">{session.user?.email}</p>
+            <p className="text-xs text-zinc-500 mb-1">Admin Access</p>
+            <p className="text-sm font-medium text-white truncate">Open Access Mode</p>
           </div>
-          <SignOutButton />
         </div>
       </aside>
 

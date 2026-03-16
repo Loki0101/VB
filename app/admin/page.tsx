@@ -1,6 +1,8 @@
 import { prisma } from "@/lib/prisma";
 import { Plus, Users, BookOpen, GraduationCap } from "lucide-react";
 import Link from "next/link";
+    
+export const dynamic = "force-dynamic";
 
 export default async function AdminDashboard() {
   const studentCount = await prisma.student.count();

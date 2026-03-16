@@ -2,7 +2,9 @@ import { prisma } from "@/lib/prisma";
     import Link from "next/link";
     import { Search, Plus, MoreVertical, Edit2, Trash2, ExternalLink } from "lucide-react";
     
-    export default async function StudentListPage() {
+export const dynamic = "force-dynamic";
+
+export default async function StudentListPage() {
       const students = await prisma.student.findMany({
         include: { _count: { select: { projects: true } } },
         orderBy: { updatedAt: "desc" },

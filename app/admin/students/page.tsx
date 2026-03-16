@@ -5,14 +5,28 @@ import { prisma } from "@/lib/prisma";
 export const dynamic = "force-dynamic";
 
 export default async function StudentListPage() {
-      const students = await prisma.student.findMany({
-        include: { _count: { select: { projects: true } } },
-        orderBy: { updatedAt: "desc" },
-      });
-    
-      return (
-        <div className="space-y-6">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+  let students: any[] = [];
+  let error = false;
+
+  try {
+    students = await prisma.student.findMany({
+      include: { _count: { select: { projects: true } } },
+      orderBy: { updatedAt: "desc" },
+    });
+  } catch (e) {
+    console.error("Student list database error:", e);
+    error = true;
+  }
+
+  return (
+    <div className="space-y-6">
+      {error && (
+        <div className="bg-red-500/10 border border-red-500/20 text-red-500 p-4 rounded-xl text-sm flex items-center gap-3">
+          <div className="w-2 h-2 bg-red-500 rounded-full animate-ping" />
+          <span>Error loading students. Verifying database connection...</span>
+        </div>
+      )}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <h2 className="text-2xl font-bold text-white">Students</h2>
               <p className="text-zinc-500 text-sm">Manage student profiles and portfolios</p>

@@ -17,9 +17,9 @@ import Link from "next/link";
 interface Project {
   id?: string;
   title: string;
-  description: string;
-  image: string;
-  link: string;
+  description: string | null;
+  image: string | null;
+  link: string | null;
 }
 
 interface StudentFormProps {
@@ -244,7 +244,7 @@ export default function StudentForm({ initialData }: StudentFormProps) {
                         <label className="text-xs font-medium text-zinc-500 uppercase tracking-wider">Description</label>
                         <textarea 
                           rows={2}
-                          value={project.description}
+                          value={project.description || ""}
                           onChange={e => handleProjectChange(index, "description", e.target.value)}
                           className="w-full bg-zinc-800/30 border border-zinc-700/50 rounded-xl py-2.5 px-4 text-sm focus:ring-1 focus:ring-indigo-500 outline-none resize-none"
                           placeholder="Brief project details..."
@@ -257,7 +257,7 @@ export default function StudentForm({ initialData }: StudentFormProps) {
                         <div className="relative">
                           <ImageIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600" />
                           <input 
-                            value={project.image}
+                            value={project.image || ""}
                             onChange={e => handleProjectChange(index, "image", e.target.value)}
                             className="w-full bg-zinc-800/30 border border-zinc-700/50 rounded-xl py-2.5 pl-10 pr-4 text-sm focus:ring-1 focus:ring-indigo-500 outline-none"
                             placeholder="https://images.unsplash.com/..."
@@ -269,7 +269,7 @@ export default function StudentForm({ initialData }: StudentFormProps) {
                         <div className="relative">
                           <LinkIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600" />
                           <input 
-                            value={project.link}
+                            value={project.link || ""}
                             onChange={e => handleProjectChange(index, "link", e.target.value)}
                             className="w-full bg-zinc-800/30 border border-zinc-700/50 rounded-xl py-2.5 pl-10 pr-4 text-sm focus:ring-1 focus:ring-indigo-500 outline-none"
                             placeholder="https://github.com/..."

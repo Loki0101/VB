@@ -11,7 +11,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       async authorize(credentials) {
         const adminPassword = process.env.ADMIN_PASSWORD
 
-        if (credentials?.password === adminPassword) {
+        if (credentials?.password && credentials.password === adminPassword?.trim()) {
           return {
             id: "admin",
             name: "Administrator",
